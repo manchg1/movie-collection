@@ -9,7 +9,6 @@ export async function POST(_, { params }) {
         method: 'DELETE',
     });
 
-    // Revalidate affected routes
     revalidatePath('/collection');
     revalidatePath(`/collection/${id}`);
     revalidatePath('/admin');
