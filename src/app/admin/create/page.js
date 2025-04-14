@@ -36,7 +36,7 @@ export default function CreateMoviePage() {
         // ✅ Fetch and check if ID already exists
         const res = await fetch("http://localhost:4000/movies");
         const movies = await res.json();
-        const idExists = movies.find((m) => m.id === Number(id));
+        const idExists = movies.some((m) => Number(m.id) === Number(id));
 
         if (idExists) {
             setErrors(["A movie with this ID already exists. Please use a unique ID."]);
