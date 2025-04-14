@@ -1,4 +1,5 @@
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation'; // ✅ add this line
 
 export async function POST(request, { params }) {
     const id = params.id;
@@ -11,5 +12,5 @@ export async function POST(request, { params }) {
     revalidatePath(`/collection/${id}`);
     revalidatePath('/admin');
 
-    return new Response(null, { status: 200 });
+    redirect('/admin');
 }

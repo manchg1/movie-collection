@@ -15,10 +15,6 @@ export default function EditForm({ movie }) {
         if (!form.director.trim()) {
             errs.push("Director is required.");
         }
-        const currentYear = new Date().getFullYear();
-        if (form.release_year > currentYear) {
-            errs.push("Release year cannot be in the future.");
-        }
         return errs;
     };
 
@@ -33,46 +29,41 @@ export default function EditForm({ movie }) {
         await fetch(`http://localhost:4000/movies/${form.id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form)
+            body: JSON.stringify(form),
         });
         router.push("/admin");
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Edit Movie</h2>
-
+        <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
             {errors.length > 0 && (
-                <ul>
-                    {errors.map((e, i) => (
-                        <li key={i} style={{ color: "red" }}>{e}</li>
-                    ))}
+                <ul className="text-red-600 list-disc list-inside">
+                    {errors.map((e, i) => <li key={i}>{e}</li>)}
                 </ul>
             )}
-
             <input
                 name="title"
                 value={form.title}
                 onChange={(e) => setForm({ ...form, title: e.target.value })}
+                className="border w-full p-1"
                 placeholder="Title"
-            /><br />
-
+            />
             <input
                 name="director"
                 value={form.director}
                 onChange={(e) => setForm({ ...form, director: e.target.value })}
+                className="border w-full p-1"
                 placeholder="Director"
-            /><br />
-
+            />
             <input
                 type="number"
                 name="release_year"
                 value={form.release_year}
                 onChange={(e) => setForm({ ...form, release_year: parseInt(e.target.value) })}
+                className="border w-full p-1"
                 placeholder="Release Year"
-            /><br />
-
-            <button type="submit">Save</button>
+            />
+            <button className="bg-blue-600 text-white px-4 py-2">Save</button>
         </form>
     );
 }
