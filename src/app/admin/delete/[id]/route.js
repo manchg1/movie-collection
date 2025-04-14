@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'; // ✅ add this line
 export async function POST(request, { params }) {
     const id = params.id;
 
-    await fetch(`http://localhost:4000/movies/${id}`, {
+    await fetch(`http://localhost:4000/movies/${Number(params.id)}`, {
         method: 'DELETE',
     });
 
