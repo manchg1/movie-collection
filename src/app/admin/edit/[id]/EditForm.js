@@ -15,6 +15,10 @@ export default function EditForm({ movie }) {
         if (!form.director.trim()) {
             errs.push("Director is required.");
         }
+        const currentYear = new Date().getFullYear();
+        if (form.release_year > currentYear) {
+            errs.push("Release year cannot be in the future.");
+        }
         return errs;
     };
 
