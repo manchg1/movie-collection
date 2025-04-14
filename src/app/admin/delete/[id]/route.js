@@ -1,4 +1,3 @@
-// src/app/admin/delete/[id]/route.js
 import { revalidatePath } from 'next/cache';
 
 export async function POST(request, { params }) {
