@@ -9,12 +9,10 @@ export default function EditForm({ movie }) {
 
     const validate = () => {
         const errs = [];
-        if (form.title.trim().length < 2) {
-            errs.push("Title must be at least 2 characters.");
-        }
-        if (!form.director.trim()) {
-            errs.push("Director is required.");
-        }
+        if (form.title.trim().length < 2) errs.push("Title must be at least 2 characters.");
+        if (!form.director.trim()) errs.push("Director is required.");
+        const currentYear = new Date().getFullYear();
+        if (form.release_year > currentYear) errs.push("Release year cannot be in the future.");
         return errs;
     };
 
