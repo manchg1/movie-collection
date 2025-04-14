@@ -1,3 +1,52 @@
 {
-  "movies": []
+  "movies": [
+    {
+      "id": 1,
+      "title": "Dangal",
+      "director": "Nitesh Tiwari",
+      "release_year": 2016
+    },
+    {
+      "id": 2,
+      "title": "3 Idiots",
+      "director": "Rajkumar Hirani",
+      "release_year": 2009
+    },
+    {
+      "id": 3,
+      "title": "Lagaan",
+      "director": "Ashutosh Gowariker",
+      "release_year": 2001
+    },
+    {
+      "id": 4,
+      "title": "Baahubali: The Beginning",
+      "director": "S. S. Rajamouli",
+      "release_year": 2015
+    },
+    {
+      "id": 5,
+      "title": "RRR",
+      "director": "S. S. Rajamouli",
+      "release_year": 2022
+    },
+    {
+      "id": 6,
+      "title": "Room",
+      "director": "Lenny Abrahamson",
+      "release_year": 2015
+    },
+    {
+      "id": 7,
+      "title": "Incendies",
+      "director": "Denis Villeneuve",
+      "release_year": 2010
+    },
+    {
+      "id": 8,
+      "title": "The Sweet Hereafter",
+      "director": "Atom Egoyan",
+      "release_year": 1997
+    }
+  ]
 }
