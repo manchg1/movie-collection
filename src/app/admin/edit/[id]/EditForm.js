@@ -4,23 +4,44 @@ import { useRouter } from "next/navigation";
 
 export default function EditForm({ movie }) {
     const [form, setForm] = useState(movie);
+    const [errors, setErrors] = useState([]);
     const router = useRouter();
+
+    const validate = () => {
+        const errs = [];
+        if (form.title.trim().length < 2) {
+            errs.push("Title must be at least 2 characters.");
+        }
+        return errs;
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const errs = validate();
+        if (errs.length > 0) {
+            setErrors(errs);
+            return;
+        }
 
         await fetch(`http://localhost:4000/movies/${form.id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
+            body: JSON.stringify(form)
         });
-
         router.push("/admin");
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <h2>Edit Movie</h2>
+
+            {errors.length > 0 && (
+                <ul>
+                    {errors.map((e, i) => (
+                        <li key={i} style={{ color: "red" }}>{e}</li>
+                    ))}
+                </ul>
+            )}
 
             <input
                 name="title"
@@ -44,7 +65,7 @@ export default function EditForm({ movie }) {
                 placeholder="Release Year"
             /><br />
 
-            <button>Save</button>
+            <button type="submit">Save</button>
         </form>
     );
 }
