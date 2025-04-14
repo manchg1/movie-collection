@@ -27,7 +27,7 @@ export default async function MovieDetailPage({ params }) {
     return (
         <main className="p-6">
             <Link href="/collection" className="text-blue-500 underline mb-4 block">← Back</Link>
-            <h1 className="text-2xl font-bold mb-4">{movie.director}</h1>
+            <h1 className="text-2xl font-bold mb-4">{movie.title}</h1>
             <table className="table-auto border-collapse border border-gray-400">
                 <tbody>
                 <tr>
