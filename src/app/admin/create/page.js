@@ -18,9 +18,9 @@ export default function CreateMoviePage() {
         if (!id.trim() || isNaN(Number(id))) errs.push("ID must be a valid number.");
         if (title.trim().length < 2) errs.push("Title must be at least 2 characters.");
         if (!director.trim()) errs.push("Director is required.");
-        if (!year.trim() || isNaN(Number(year)) || Number(year) > currentYear)
+        if (!year.trim() || isNaN(Number(year)) || Number(year) > currentYear) {
             errs.push("Release year must be a valid number and not in the future.");
-
+        }
         return errs;
     };
 
@@ -33,6 +33,17 @@ export default function CreateMoviePage() {
             return;
         }
 
+        // ✅ Fetch and check if ID already exists
+        const res = await fetch("http://localhost:4000/movies");
+        const movies = await res.json();
+        const idExists = movies.find((m) => m.id === Number(id));
+
+        if (idExists) {
+            setErrors(["A movie with this ID already exists. Please use a unique ID."]);
+            return;
+        }
+
+        // ✅ If unique, proceed
         await fetch("http://localhost:4000/movies", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
