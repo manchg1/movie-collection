@@ -2,7 +2,7 @@
 
 ## How to Run
 
-1. Start JSON Server:
+1. In one terminal, Start JSON Server:
    ```
    npm run serve-json
    ```
