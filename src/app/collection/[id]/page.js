@@ -4,7 +4,7 @@ export async function generateStaticParams() {
     const res = await fetch("http://localhost:4000/movies");
     const movies = await res.json();
     return movies.slice(0, 10).map((movie) => ({
-        id: movie.id.toString(),
+        id: movie.id,
     }));
 }
 

@@ -27,8 +27,12 @@ export default function EditForm({ movie }) {
         await fetch(`http://localhost:4000/movies/${form.id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(form),
+            body: JSON.stringify({
+                ...form,
+                id: form.id.trim(),
+            }),
         });
+
         router.push("/admin");
     };
 

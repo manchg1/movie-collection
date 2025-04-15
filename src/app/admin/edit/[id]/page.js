@@ -1,7 +1,9 @@
 import EditForm from './EditForm';
 
 export default async function EditMoviePage({ params }) {
-    const res = await fetch(`http://localhost:4000/movies/${Number(params.id)}`);
+    const res = await fetch(`http://localhost:4000/movies/${params.id}`, {
+        cache: 'no-store',
+    });
     const movie = await res.json();
 
     if (!movie.id) {

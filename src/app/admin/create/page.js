@@ -17,9 +17,9 @@ export default function CreateMoviePage() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                id: Number(id),
-                title,
-                director,
+                id: id.trim(),
+                title: title.trim(),
+                director: director.trim(),
                 release_year: Number(year),
             }),
         });

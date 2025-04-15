@@ -1,10 +1,10 @@
 import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation'; // ✅ add this line
+import { redirect } from 'next/navigation';
 
-export async function POST(request, { params }) {
-    const id = params.id;
+export async function POST(request, context) {
+    const id = context.params.id;
 
-    await fetch(`http://localhost:4000/movies/${Number(params.id)}`, {
+    await fetch(`http://localhost:4000/movies/${id}`, {
         method: 'DELETE',
     });
 
